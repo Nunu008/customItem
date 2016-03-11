@@ -18,10 +18,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e);
 private:
     Ui::MainWindow *ui;
     QGraphicsScene     *scene;
     QGraphicsItemGroup *group;
+    bool isGroupped;
 
 };
 

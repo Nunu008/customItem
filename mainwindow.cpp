@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     group = scene->createItemGroup(scene->selectedItems());
     group->setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
+    group->setHandlesChildEvents(false);
+
 
 
     CustomItemEllipse *ellipse1 = new CustomItemEllipse();
@@ -30,9 +32,19 @@ MainWindow::MainWindow(QWidget *parent) :
     CustomItemRect *rect       = new CustomItemRect();
     scene->addItem(rect);
     group->addToGroup(rect);
+    rect->setGroup(group);
+    isGroupped = false;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* e )
+{
+        isGroupped = !isGroupped;
+        qDebug()<<"doubleclick: isGroupped: "<< isGroupped;
+
+        group->setHandlesChildEvents(isGroupped);
 }

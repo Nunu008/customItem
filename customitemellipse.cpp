@@ -21,3 +21,10 @@ void CustomItemEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem 
     painter->setPen(pen);
     painter->drawEllipse(ellipse);
 }
+
+void CustomItemEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    qDebug()<<"Ellipse";
+    //update();
+    //QGraphicsItem::mousePressEvent(event);
+}
